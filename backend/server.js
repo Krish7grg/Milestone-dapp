@@ -30,7 +30,7 @@ const projectSchema = new mongoose.Schema(
       default: "Active",
     },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 const Project = mongoose.model("Project", projectSchema);
@@ -79,6 +79,6 @@ mongoose
       console.log(`Backend running on port ${PORT}`);
     });
   })
-  .catch(error => {
+  .catch((error) => {
     console.error("MongoDB connection error:", error.message);
   });
