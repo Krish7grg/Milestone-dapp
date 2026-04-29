@@ -1,0 +1,36 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/MilestoneFunding.sol": {
+      "content": "// SPDX-License-Identifier: MIT\npragma solidity >=0.8.0 <0.9.0;\n\ncontract MilestoneFunding {\n    enum ProjectStatus {\n        Active,\n        Completed,\n        Cancelled\n    }\n\n    struct Project {\n        address payable creator;\n        address funder;\n        string title;\n        uint256 totalAmount;\n        uint256 releasedAmount;\n        uint256 milestoneCount;\n        uint256 completedMilestones;\n        ProjectStatus status;\n    }\n\n    uint256 public projectCounter;\n\n    mapping(uint256 => Project) public projects;\n    mapping(uint256 => mapping(uint256 => bool)) public milestoneReleased;\n\n    event ProjectCreated(uint256 indexed projectId, address indexed creator, string title, uint256 milestoneCount);\n    event ProjectFunded(uint256 indexed projectId, address indexed funder, uint256 amount);\n    event MilestoneReleased(uint256 indexed projectId, uint256 milestoneIndex, uint256 amount);\n    event ProjectCancelled(uint256 indexed projectId);\n\n    function createProject(string memory _title, uint256 _milestoneCount) external {\n        require(bytes(_title).length > 0, \"Title is required\");\n        require(_milestoneCount > 0, \"Milestone count must be greater than zero\");\n\n        projectCounter++;\n\n        projects[projectCounter] = Project({\n            creator: payable(msg.sender),\n            funder: address(0),\n            title: _title,\n            totalAmount: 0,\n            releasedAmount: 0,\n            milestoneCount: _milestoneCount,\n            completedMilestones: 0,\n            status: ProjectStatus.Active\n        });\n\n        emit ProjectCreated(projectCounter, msg.sender, _title, _milestoneCount);\n    }\n\n    function fundProject(uint256 _projectId) external payable {\n        Project storage project = projects[_projectId];\n\n        require(project.creator != address(0), \"Project does not exist\");\n        require(project.status == ProjectStatus.Active, \"Project is not active\");\n        require(msg.value > 0, \"Funding amount must be greater than zero\");\n        require(project.funder == address(0), \"Project already funded\");\n        require(msg.sender != project.creator, \"Creator cannot fund own project\");\n\n        project.funder = msg.sender;\n        project.totalAmount = msg.value;\n\n        emit ProjectFunded(_projectId, msg.sender, msg.value);\n    }\n\n    function releaseMilestone(uint256 _projectId, uint256 _milestoneIndex) external {\n        Project storage project = projects[_projectId];\n\n        require(project.creator != address(0), \"Project does not exist\");\n        require(msg.sender == project.funder, \"Only funder can release milestone\");\n        require(project.status == ProjectStatus.Active, \"Project is not active\");\n        require(_milestoneIndex < project.milestoneCount, \"Invalid milestone\");\n        require(!milestoneReleased[_projectId][_milestoneIndex], \"Milestone already released\");\n\n        uint256 milestoneAmount = project.totalAmount / project.milestoneCount;\n\n        milestoneReleased[_projectId][_milestoneIndex] = true;\n        project.completedMilestones++;\n        project.releasedAmount += milestoneAmount;\n\n        if (project.completedMilestones == project.milestoneCount) {\n            project.status = ProjectStatus.Completed;\n\n            uint256 remainingBalance = project.totalAmount - project.releasedAmount;\n            milestoneAmount += remainingBalance;\n            project.releasedAmount = project.totalAmount;\n        }\n\n        project.creator.transfer(milestoneAmount);\n\n        emit MilestoneReleased(_projectId, _milestoneIndex, milestoneAmount);\n    }\n\n    function cancelProject(uint256 _projectId) external {\n        Project storage project = projects[_projectId];\n\n        require(project.creator != address(0), \"Project does not exist\");\n        require(msg.sender == project.creator, \"Only creator can cancel\");\n        require(project.funder == address(0), \"Cannot cancel funded project\");\n        require(project.status == ProjectStatus.Active, \"Project is not active\");\n\n        project.status = ProjectStatus.Cancelled;\n\n        emit ProjectCancelled(_projectId);\n    }\n\n    function getProject(uint256 _projectId) external view returns (Project memory) {\n        return projects[_projectId];\n    }\n}\n"
+    }
+  },
+  "settings": {
+    "optimizer": {
+      "enabled": true,
+      "runs": 200
+    },
+    "evmVersion": "paris",
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode",
+          "evm.deployedBytecode",
+          "evm.methodIdentifiers",
+          "metadata",
+          "devdoc",
+          "userdoc",
+          "storageLayout",
+          "evm.gasEstimates"
+        ],
+        "": [
+          "ast"
+        ]
+      }
+    },
+    "metadata": {
+      "useLiteralContent": true
+    }
+  }
+}

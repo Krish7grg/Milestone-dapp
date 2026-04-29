@@ -1,0 +1,497 @@
+{
+  "address": "0x27EAC216B942E1c245c966899423E9DeDc69458c",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "projectId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "milestoneIndex",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "MilestoneReleased",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "projectId",
+          "type": "uint256"
+        }
+      ],
+      "name": "ProjectCancelled",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "projectId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "creator",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "milestoneCount",
+          "type": "uint256"
+        }
+      ],
+      "name": "ProjectCreated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "projectId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "funder",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "ProjectFunded",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_projectId",
+          "type": "uint256"
+        }
+      ],
+      "name": "cancelProject",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "_title",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_milestoneCount",
+          "type": "uint256"
+        }
+      ],
+      "name": "createProject",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_projectId",
+          "type": "uint256"
+        }
+      ],
+      "name": "fundProject",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_projectId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getProject",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "address payable",
+              "name": "creator",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "funder",
+              "type": "address"
+            },
+            {
+              "internalType": "string",
+              "name": "title",
+              "type": "string"
+            },
+            {
+              "internalType": "uint256",
+              "name": "totalAmount",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "releasedAmount",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "milestoneCount",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "completedMilestones",
+              "type": "uint256"
+            },
+            {
+              "internalType": "enum MilestoneFunding.ProjectStatus",
+              "name": "status",
+              "type": "uint8"
+            }
+          ],
+          "internalType": "struct MilestoneFunding.Project",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "milestoneReleased",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "projectCounter",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "projects",
+      "outputs": [
+        {
+          "internalType": "address payable",
+          "name": "creator",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "funder",
+          "type": "address"
+        },
+        {
+          "internalType": "string",
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "totalAmount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "releasedAmount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "milestoneCount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "completedMilestones",
+          "type": "uint256"
+        },
+        {
+          "internalType": "enum MilestoneFunding.ProjectStatus",
+          "name": "status",
+          "type": "uint8"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_projectId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_milestoneIndex",
+          "type": "uint256"
+        }
+      ],
+      "name": "releaseMilestone",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0x748c725cbf58b20a88854073dc49ea03c652ff580afb2401eb4d48d77d60d7b4",
+  "receipt": {
+    "to": null,
+    "from": "0x617cc9BcBD559CcD5ceE433608F663f70127755e",
+    "contractAddress": "0x27EAC216B942E1c245c966899423E9DeDc69458c",
+    "transactionIndex": 64,
+    "gasUsed": "1002702",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0xe8dc85d6ca448dca966a78bf30814735a6c4427638e5fe7b97d8e44ba7f6d5e2",
+    "transactionHash": "0x748c725cbf58b20a88854073dc49ea03c652ff580afb2401eb4d48d77d60d7b4",
+    "logs": [],
+    "blockNumber": 10755994,
+    "cumulativeGasUsed": "13542911",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [],
+  "numDeployments": 1,
+  "solcInputHash": "edeb9851648c65949e6fd28ee517cd96",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.30+commit.73712a01\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"projectId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"milestoneIndex\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"MilestoneReleased\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"projectId\",\"type\":\"uint256\"}],\"name\":\"ProjectCancelled\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"projectId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"creator\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"title\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"milestoneCount\",\"type\":\"uint256\"}],\"name\":\"ProjectCreated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"projectId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"funder\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"ProjectFunded\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_projectId\",\"type\":\"uint256\"}],\"name\":\"cancelProject\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_title\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"_milestoneCount\",\"type\":\"uint256\"}],\"name\":\"createProject\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_projectId\",\"type\":\"uint256\"}],\"name\":\"fundProject\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_projectId\",\"type\":\"uint256\"}],\"name\":\"getProject\",\"outputs\":[{\"components\":[{\"internalType\":\"address payable\",\"name\":\"creator\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"funder\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"title\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"totalAmount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"releasedAmount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"milestoneCount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"completedMilestones\",\"type\":\"uint256\"},{\"internalType\":\"enum MilestoneFunding.ProjectStatus\",\"name\":\"status\",\"type\":\"uint8\"}],\"internalType\":\"struct MilestoneFunding.Project\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"milestoneReleased\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"projectCounter\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"projects\",\"outputs\":[{\"internalType\":\"address payable\",\"name\":\"creator\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"funder\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"title\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"totalAmount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"releasedAmount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"milestoneCount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"completedMilestones\",\"type\":\"uint256\"},{\"internalType\":\"enum MilestoneFunding.ProjectStatus\",\"name\":\"status\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_projectId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_milestoneIndex\",\"type\":\"uint256\"}],\"name\":\"releaseMilestone\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/MilestoneFunding.sol\":\"MilestoneFunding\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"contracts/MilestoneFunding.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity >=0.8.0 <0.9.0;\\n\\ncontract MilestoneFunding {\\n    enum ProjectStatus {\\n        Active,\\n        Completed,\\n        Cancelled\\n    }\\n\\n    struct Project {\\n        address payable creator;\\n        address funder;\\n        string title;\\n        uint256 totalAmount;\\n        uint256 releasedAmount;\\n        uint256 milestoneCount;\\n        uint256 completedMilestones;\\n        ProjectStatus status;\\n    }\\n\\n    uint256 public projectCounter;\\n\\n    mapping(uint256 => Project) public projects;\\n    mapping(uint256 => mapping(uint256 => bool)) public milestoneReleased;\\n\\n    event ProjectCreated(uint256 indexed projectId, address indexed creator, string title, uint256 milestoneCount);\\n    event ProjectFunded(uint256 indexed projectId, address indexed funder, uint256 amount);\\n    event MilestoneReleased(uint256 indexed projectId, uint256 milestoneIndex, uint256 amount);\\n    event ProjectCancelled(uint256 indexed projectId);\\n\\n    function createProject(string memory _title, uint256 _milestoneCount) external {\\n        require(bytes(_title).length > 0, \\\"Title is required\\\");\\n        require(_milestoneCount > 0, \\\"Milestone count must be greater than zero\\\");\\n\\n        projectCounter++;\\n\\n        projects[projectCounter] = Project({\\n            creator: payable(msg.sender),\\n            funder: address(0),\\n            title: _title,\\n            totalAmount: 0,\\n            releasedAmount: 0,\\n            milestoneCount: _milestoneCount,\\n            completedMilestones: 0,\\n            status: ProjectStatus.Active\\n        });\\n\\n        emit ProjectCreated(projectCounter, msg.sender, _title, _milestoneCount);\\n    }\\n\\n    function fundProject(uint256 _projectId) external payable {\\n        Project storage project = projects[_projectId];\\n\\n        require(project.creator != address(0), \\\"Project does not exist\\\");\\n        require(project.status == ProjectStatus.Active, \\\"Project is not active\\\");\\n        require(msg.value > 0, \\\"Funding amount must be greater than zero\\\");\\n        require(project.funder == address(0), \\\"Project already funded\\\");\\n        require(msg.sender != project.creator, \\\"Creator cannot fund own project\\\");\\n\\n        project.funder = msg.sender;\\n        project.totalAmount = msg.value;\\n\\n        emit ProjectFunded(_projectId, msg.sender, msg.value);\\n    }\\n\\n    function releaseMilestone(uint256 _projectId, uint256 _milestoneIndex) external {\\n        Project storage project = projects[_projectId];\\n\\n        require(project.creator != address(0), \\\"Project does not exist\\\");\\n        require(msg.sender == project.funder, \\\"Only funder can release milestone\\\");\\n        require(project.status == ProjectStatus.Active, \\\"Project is not active\\\");\\n        require(_milestoneIndex < project.milestoneCount, \\\"Invalid milestone\\\");\\n        require(!milestoneReleased[_projectId][_milestoneIndex], \\\"Milestone already released\\\");\\n\\n        uint256 milestoneAmount = project.totalAmount / project.milestoneCount;\\n\\n        milestoneReleased[_projectId][_milestoneIndex] = true;\\n        project.completedMilestones++;\\n        project.releasedAmount += milestoneAmount;\\n\\n        if (project.completedMilestones == project.milestoneCount) {\\n            project.status = ProjectStatus.Completed;\\n\\n            uint256 remainingBalance = project.totalAmount - project.releasedAmount;\\n            milestoneAmount += remainingBalance;\\n            project.releasedAmount = project.totalAmount;\\n        }\\n\\n        project.creator.transfer(milestoneAmount);\\n\\n        emit MilestoneReleased(_projectId, _milestoneIndex, milestoneAmount);\\n    }\\n\\n    function cancelProject(uint256 _projectId) external {\\n        Project storage project = projects[_projectId];\\n\\n        require(project.creator != address(0), \\\"Project does not exist\\\");\\n        require(msg.sender == project.creator, \\\"Only creator can cancel\\\");\\n        require(project.funder == address(0), \\\"Cannot cancel funded project\\\");\\n        require(project.status == ProjectStatus.Active, \\\"Project is not active\\\");\\n\\n        project.status = ProjectStatus.Cancelled;\\n\\n        emit ProjectCancelled(_projectId);\\n    }\\n\\n    function getProject(uint256 _projectId) external view returns (Project memory) {\\n        return projects[_projectId];\\n    }\\n}\\n\",\"keccak256\":\"0x8114c67b3bf0e80a5178eabd9ed9d285bf9c5b9253d1819fa805eb95862825fb\",\"license\":\"MIT\"}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b5061112d8061001f6000396000f3fe60806040526004361061007b5760003560e01c806391754a5d1161004e57806391754a5d1461013d578063dbaf09101461015d578063f0f3f2c81461017d578063f8a518ed146101aa57600080fd5b8063107046bd1461008057806324941147146100bd57806334ae0561146100df5780636c563abe1461012a575b600080fd5b34801561008c57600080fd5b506100a061009b366004610c41565b6101ce565b6040516100b4989796959493929190610cd8565b60405180910390f35b3480156100c957600080fd5b506100dd6100d8366004610c41565b6102aa565b005b3480156100eb57600080fd5b5061011a6100fa366004610d39565b600260209081526000928352604080842090915290825290205460ff1681565b60405190151581526020016100b4565b6100dd610138366004610c41565b610412565b34801561014957600080fd5b506100dd610158366004610d71565b6105eb565b34801561016957600080fd5b506100dd610178366004610d39565b6107e9565b34801561018957600080fd5b5061019d610198366004610c41565b610aa1565b6040516100b49190610e2c565b3480156101b657600080fd5b506101c060005481565b6040519081526020016100b4565b60016020819052600091825260409091208054918101546002820180546001600160a01b0394851694909216929161020590610eb1565b80601f016020809104026020016040519081016040528092919081815260200182805461023190610eb1565b801561027e5780601f106102535761010080835404028352916020019161027e565b820191906000526020600020905b81548152906001019060200180831161026157829003601f168201915b505050600384015460048501546005860154600687015460079097015495969295919450925060ff1688565b600081815260016020526040902080546001600160a01b03166102e85760405162461bcd60e51b81526004016102df90610eeb565b60405180910390fd5b80546001600160a01b031633146103415760405162461bcd60e51b815260206004820152601760248201527f4f6e6c792063726561746f722063616e2063616e63656c00000000000000000060448201526064016102df565b60018101546001600160a01b03161561039c5760405162461bcd60e51b815260206004820152601c60248201527f43616e6e6f742063616e63656c2066756e6465642070726f6a6563740000000060448201526064016102df565b6000600782015460ff1660028111156103b7576103b7610ca0565b146103d45760405162461bcd60e51b81526004016102df90610f1b565b60078101805460ff1916600217905560405182907fe3805ed669490875ae87c5c8b1ad6ecca0e5e67305a833926d0d4317c4822fc090600090a25050565b600081815260016020526040902080546001600160a01b03166104475760405162461bcd60e51b81526004016102df90610eeb565b6000600782015460ff16600281111561046257610462610ca0565b1461047f5760405162461bcd60e51b81526004016102df90610f1b565b600034116104e05760405162461bcd60e51b815260206004820152602860248201527f46756e64696e6720616d6f756e74206d7573742062652067726561746572207460448201526768616e207a65726f60c01b60648201526084016102df565b60018101546001600160a01b0316156105345760405162461bcd60e51b8152602060048201526016602482015275141c9bda9958dd08185b1c9958591e48199d5b99195960521b60448201526064016102df565b80546001600160a01b0316330361058d5760405162461bcd60e51b815260206004820152601f60248201527f43726561746f722063616e6e6f742066756e64206f776e2070726f6a6563740060448201526064016102df565b6001810180546001600160a01b03191633908117909155346003830181905560405184917f6251418ffd7f504740544ec3d578897633e212c5d658b7dce793c5dc9d2e855e916105df91815260200190565b60405180910390a35050565b60008251116106305760405162461bcd60e51b8152602060048201526011602482015270151a5d1b19481a5cc81c995c5d5a5c9959607a1b60448201526064016102df565b600081116106925760405162461bcd60e51b815260206004820152602960248201527f4d696c6573746f6e6520636f756e74206d7573742062652067726561746572206044820152687468616e207a65726f60b81b60648201526084016102df565b6000805490806106a183610f60565b9190505550604051806101000160405280336001600160a01b0316815260200160006001600160a01b031681526020018381526020016000815260200160008152602001828152602001600081526020016000600281111561070557610705610ca0565b905260008054815260016020818152604092839020845181546001600160a01b03199081166001600160a01b03928316178355928601519382018054909316931692909217905590820151600282019061075f9082610fc8565b50606082015160038201556080820151600482015560a0820151600582015560c0820151600682015560e082015160078201805460ff191660018360028111156107ab576107ab610ca0565b0217905550506000546040513392507f51d08cb6cfa640a387210fb69df925dfb70169ae7373f8ecd40b977b0c800d9a906105df9086908690611087565b600082815260016020526040902080546001600160a01b031661081e5760405162461bcd60e51b81526004016102df90610eeb565b60018101546001600160a01b031633146108845760405162461bcd60e51b815260206004820152602160248201527f4f6e6c792066756e6465722063616e2072656c65617365206d696c6573746f6e6044820152606560f81b60648201526084016102df565b6000600782015460ff16600281111561089f5761089f610ca0565b146108bc5760405162461bcd60e51b81526004016102df90610f1b565b806005015482106109035760405162461bcd60e51b8152602060048201526011602482015270496e76616c6964206d696c6573746f6e6560781b60448201526064016102df565b600083815260026020908152604080832085845290915290205460ff161561096d5760405162461bcd60e51b815260206004820152601a60248201527f4d696c6573746f6e6520616c72656164792072656c656173656400000000000060448201526064016102df565b60008160050154826003015461098391906110a9565b60008581526002602090815260408083208784529091528120805460ff19166001179055600684018054929350906109ba83610f60565b9190505550808260040160008282546109d391906110cb565b90915550506005820154600683015403610a265760078201805460ff1916600117905560048201546003830154600091610a0c916110e4565b9050610a1881836110cb565b600384015460048501559150505b81546040516001600160a01b039091169082156108fc029083906000818181858888f19350505050158015610a5f573d6000803e3d6000fd5b50604080518481526020810183905285917fd33fcd27cbfb73a2d9058c968b560ccb306500bf536133802048489ecc7355e9910160405180910390a250505050565b610aa9610bda565b60008281526001602081815260409283902083516101008101855281546001600160a01b03908116825293820154909316918301919091526002810180549293919291840191610af890610eb1565b80601f0160208091040260200160405190810160405280929190818152602001828054610b2490610eb1565b8015610b715780601f10610b4657610100808354040283529160200191610b71565b820191906000526020600020905b815481529060010190602001808311610b5457829003601f168201915b505050918352505060038201546020820152600482015460408201526005820154606082015260068201546080820152600782015460a09091019060ff166002811115610bc057610bc0610ca0565b6002811115610bd157610bd1610ca0565b90525092915050565b60405180610100016040528060006001600160a01b0316815260200160006001600160a01b03168152602001606081526020016000815260200160008152602001600081526020016000815260200160006002811115610c3c57610c3c610ca0565b905290565b600060208284031215610c5357600080fd5b5035919050565b6000815180845260005b81811015610c8057602081850181015186830182015201610c64565b506000602082860101526020601f19601f83011685010191505092915050565b634e487b7160e01b600052602160045260246000fd5b60038110610cd457634e487b7160e01b600052602160045260246000fd5b9052565b6001600160a01b0389811682528816602082015261010060408201819052600090610d0590830189610c5a565b90508660608301528560808301528460a08301528360c0830152610d2c60e0830184610cb6565b9998505050505050505050565b60008060408385031215610d4c57600080fd5b50508035926020909101359150565b634e487b7160e01b600052604160045260246000fd5b60008060408385031215610d8457600080fd5b823567ffffffffffffffff811115610d9b57600080fd5b8301601f81018513610dac57600080fd5b803567ffffffffffffffff811115610dc657610dc6610d5b565b604051601f8201601f19908116603f0116810167ffffffffffffffff81118282101715610df557610df5610d5b565b604052818152828201602001871015610e0d57600080fd5b8160208401602083013760006020928201830152969401359450505050565b602080825282516001600160a01b039081168383015290830151166040808301919091528201516101006060830152600090610e6c610120840182610c5a565b905060608401516080840152608084015160a084015260a084015160c084015260c084015160e084015260e0840151610ea9610100850182610cb6565b509392505050565b600181811c90821680610ec557607f821691505b602082108103610ee557634e487b7160e01b600052602260045260246000fd5b50919050565b602080825260169082015275141c9bda9958dd08191bd95cc81b9bdd08195e1a5cdd60521b604082015260600190565b60208082526015908201527450726f6a656374206973206e6f742061637469766560581b604082015260600190565b634e487b7160e01b600052601160045260246000fd5b600060018201610f7257610f72610f4a565b5060010190565b601f821115610fc357806000526020600020601f840160051c81016020851015610fa05750805b601f840160051c820191505b81811015610fc05760008155600101610fac565b50505b505050565b815167ffffffffffffffff811115610fe257610fe2610d5b565b610ff681610ff08454610eb1565b84610f79565b6020601f82116001811461102a57600083156110125750848201515b600019600385901b1c1916600184901b178455610fc0565b600084815260208120601f198516915b8281101561105a578785015182556020948501946001909201910161103a565b50848210156110785786840151600019600387901b60f8161c191681555b50505050600190811b01905550565b60408152600061109a6040830185610c5a565b90508260208301529392505050565b6000826110c657634e487b7160e01b600052601260045260246000fd5b500490565b808201808211156110de576110de610f4a565b92915050565b818103818111156110de576110de610f4a56fea2646970667358221220f8db5cde467a6752a6d6e0a93900c4af2f6fbe4b18d2e950736ec3652d0177c964736f6c634300081e0033",
+  "deployedBytecode": "0x60806040526004361061007b5760003560e01c806391754a5d1161004e57806391754a5d1461013d578063dbaf09101461015d578063f0f3f2c81461017d578063f8a518ed146101aa57600080fd5b8063107046bd1461008057806324941147146100bd57806334ae0561146100df5780636c563abe1461012a575b600080fd5b34801561008c57600080fd5b506100a061009b366004610c41565b6101ce565b6040516100b4989796959493929190610cd8565b60405180910390f35b3480156100c957600080fd5b506100dd6100d8366004610c41565b6102aa565b005b3480156100eb57600080fd5b5061011a6100fa366004610d39565b600260209081526000928352604080842090915290825290205460ff1681565b60405190151581526020016100b4565b6100dd610138366004610c41565b610412565b34801561014957600080fd5b506100dd610158366004610d71565b6105eb565b34801561016957600080fd5b506100dd610178366004610d39565b6107e9565b34801561018957600080fd5b5061019d610198366004610c41565b610aa1565b6040516100b49190610e2c565b3480156101b657600080fd5b506101c060005481565b6040519081526020016100b4565b60016020819052600091825260409091208054918101546002820180546001600160a01b0394851694909216929161020590610eb1565b80601f016020809104026020016040519081016040528092919081815260200182805461023190610eb1565b801561027e5780601f106102535761010080835404028352916020019161027e565b820191906000526020600020905b81548152906001019060200180831161026157829003601f168201915b505050600384015460048501546005860154600687015460079097015495969295919450925060ff1688565b600081815260016020526040902080546001600160a01b03166102e85760405162461bcd60e51b81526004016102df90610eeb565b60405180910390fd5b80546001600160a01b031633146103415760405162461bcd60e51b815260206004820152601760248201527f4f6e6c792063726561746f722063616e2063616e63656c00000000000000000060448201526064016102df565b60018101546001600160a01b03161561039c5760405162461bcd60e51b815260206004820152601c60248201527f43616e6e6f742063616e63656c2066756e6465642070726f6a6563740000000060448201526064016102df565b6000600782015460ff1660028111156103b7576103b7610ca0565b146103d45760405162461bcd60e51b81526004016102df90610f1b565b60078101805460ff1916600217905560405182907fe3805ed669490875ae87c5c8b1ad6ecca0e5e67305a833926d0d4317c4822fc090600090a25050565b600081815260016020526040902080546001600160a01b03166104475760405162461bcd60e51b81526004016102df90610eeb565b6000600782015460ff16600281111561046257610462610ca0565b1461047f5760405162461bcd60e51b81526004016102df90610f1b565b600034116104e05760405162461bcd60e51b815260206004820152602860248201527f46756e64696e6720616d6f756e74206d7573742062652067726561746572207460448201526768616e207a65726f60c01b60648201526084016102df565b60018101546001600160a01b0316156105345760405162461bcd60e51b8152602060048201526016602482015275141c9bda9958dd08185b1c9958591e48199d5b99195960521b60448201526064016102df565b80546001600160a01b0316330361058d5760405162461bcd60e51b815260206004820152601f60248201527f43726561746f722063616e6e6f742066756e64206f776e2070726f6a6563740060448201526064016102df565b6001810180546001600160a01b03191633908117909155346003830181905560405184917f6251418ffd7f504740544ec3d578897633e212c5d658b7dce793c5dc9d2e855e916105df91815260200190565b60405180910390a35050565b60008251116106305760405162461bcd60e51b8152602060048201526011602482015270151a5d1b19481a5cc81c995c5d5a5c9959607a1b60448201526064016102df565b600081116106925760405162461bcd60e51b815260206004820152602960248201527f4d696c6573746f6e6520636f756e74206d7573742062652067726561746572206044820152687468616e207a65726f60b81b60648201526084016102df565b6000805490806106a183610f60565b9190505550604051806101000160405280336001600160a01b0316815260200160006001600160a01b031681526020018381526020016000815260200160008152602001828152602001600081526020016000600281111561070557610705610ca0565b905260008054815260016020818152604092839020845181546001600160a01b03199081166001600160a01b03928316178355928601519382018054909316931692909217905590820151600282019061075f9082610fc8565b50606082015160038201556080820151600482015560a0820151600582015560c0820151600682015560e082015160078201805460ff191660018360028111156107ab576107ab610ca0565b0217905550506000546040513392507f51d08cb6cfa640a387210fb69df925dfb70169ae7373f8ecd40b977b0c800d9a906105df9086908690611087565b600082815260016020526040902080546001600160a01b031661081e5760405162461bcd60e51b81526004016102df90610eeb565b60018101546001600160a01b031633146108845760405162461bcd60e51b815260206004820152602160248201527f4f6e6c792066756e6465722063616e2072656c65617365206d696c6573746f6e6044820152606560f81b60648201526084016102df565b6000600782015460ff16600281111561089f5761089f610ca0565b146108bc5760405162461bcd60e51b81526004016102df90610f1b565b806005015482106109035760405162461bcd60e51b8152602060048201526011602482015270496e76616c6964206d696c6573746f6e6560781b60448201526064016102df565b600083815260026020908152604080832085845290915290205460ff161561096d5760405162461bcd60e51b815260206004820152601a60248201527f4d696c6573746f6e6520616c72656164792072656c656173656400000000000060448201526064016102df565b60008160050154826003015461098391906110a9565b60008581526002602090815260408083208784529091528120805460ff19166001179055600684018054929350906109ba83610f60565b9190505550808260040160008282546109d391906110cb565b90915550506005820154600683015403610a265760078201805460ff1916600117905560048201546003830154600091610a0c916110e4565b9050610a1881836110cb565b600384015460048501559150505b81546040516001600160a01b039091169082156108fc029083906000818181858888f19350505050158015610a5f573d6000803e3d6000fd5b50604080518481526020810183905285917fd33fcd27cbfb73a2d9058c968b560ccb306500bf536133802048489ecc7355e9910160405180910390a250505050565b610aa9610bda565b60008281526001602081815260409283902083516101008101855281546001600160a01b03908116825293820154909316918301919091526002810180549293919291840191610af890610eb1565b80601f0160208091040260200160405190810160405280929190818152602001828054610b2490610eb1565b8015610b715780601f10610b4657610100808354040283529160200191610b71565b820191906000526020600020905b815481529060010190602001808311610b5457829003601f168201915b505050918352505060038201546020820152600482015460408201526005820154606082015260068201546080820152600782015460a09091019060ff166002811115610bc057610bc0610ca0565b6002811115610bd157610bd1610ca0565b90525092915050565b60405180610100016040528060006001600160a01b0316815260200160006001600160a01b03168152602001606081526020016000815260200160008152602001600081526020016000815260200160006002811115610c3c57610c3c610ca0565b905290565b600060208284031215610c5357600080fd5b5035919050565b6000815180845260005b81811015610c8057602081850181015186830182015201610c64565b506000602082860101526020601f19601f83011685010191505092915050565b634e487b7160e01b600052602160045260246000fd5b60038110610cd457634e487b7160e01b600052602160045260246000fd5b9052565b6001600160a01b0389811682528816602082015261010060408201819052600090610d0590830189610c5a565b90508660608301528560808301528460a08301528360c0830152610d2c60e0830184610cb6565b9998505050505050505050565b60008060408385031215610d4c57600080fd5b50508035926020909101359150565b634e487b7160e01b600052604160045260246000fd5b60008060408385031215610d8457600080fd5b823567ffffffffffffffff811115610d9b57600080fd5b8301601f81018513610dac57600080fd5b803567ffffffffffffffff811115610dc657610dc6610d5b565b604051601f8201601f19908116603f0116810167ffffffffffffffff81118282101715610df557610df5610d5b565b604052818152828201602001871015610e0d57600080fd5b8160208401602083013760006020928201830152969401359450505050565b602080825282516001600160a01b039081168383015290830151166040808301919091528201516101006060830152600090610e6c610120840182610c5a565b905060608401516080840152608084015160a084015260a084015160c084015260c084015160e084015260e0840151610ea9610100850182610cb6565b509392505050565b600181811c90821680610ec557607f821691505b602082108103610ee557634e487b7160e01b600052602260045260246000fd5b50919050565b602080825260169082015275141c9bda9958dd08191bd95cc81b9bdd08195e1a5cdd60521b604082015260600190565b60208082526015908201527450726f6a656374206973206e6f742061637469766560581b604082015260600190565b634e487b7160e01b600052601160045260246000fd5b600060018201610f7257610f72610f4a565b5060010190565b601f821115610fc357806000526020600020601f840160051c81016020851015610fa05750805b601f840160051c820191505b81811015610fc05760008155600101610fac565b50505b505050565b815167ffffffffffffffff811115610fe257610fe2610d5b565b610ff681610ff08454610eb1565b84610f79565b6020601f82116001811461102a57600083156110125750848201515b600019600385901b1c1916600184901b178455610fc0565b600084815260208120601f198516915b8281101561105a578785015182556020948501946001909201910161103a565b50848210156110785786840151600019600387901b60f8161c191681555b50505050600190811b01905550565b60408152600061109a6040830185610c5a565b90508260208301529392505050565b6000826110c657634e487b7160e01b600052601260045260246000fd5b500490565b808201808211156110de576110de610f4a565b92915050565b818103818111156110de576110de610f4a56fea2646970667358221220f8db5cde467a6752a6d6e0a93900c4af2f6fbe4b18d2e950736ec3652d0177c964736f6c634300081e0033",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 25,
+        "contract": "contracts/MilestoneFunding.sol:MilestoneFunding",
+        "label": "projectCounter",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 30,
+        "contract": "contracts/MilestoneFunding.sol:MilestoneFunding",
+        "label": "projects",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_uint256,t_struct(Project)23_storage)"
+      },
+      {
+        "astId": 36,
+        "contract": "contracts/MilestoneFunding.sol:MilestoneFunding",
+        "label": "milestoneReleased",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_mapping(t_uint256,t_mapping(t_uint256,t_bool))"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_address_payable": {
+        "encoding": "inplace",
+        "label": "address payable",
+        "numberOfBytes": "20"
+      },
+      "t_bool": {
+        "encoding": "inplace",
+        "label": "bool",
+        "numberOfBytes": "1"
+      },
+      "t_enum(ProjectStatus)5": {
+        "encoding": "inplace",
+        "label": "enum MilestoneFunding.ProjectStatus",
+        "numberOfBytes": "1"
+      },
+      "t_mapping(t_uint256,t_bool)": {
+        "encoding": "mapping",
+        "key": "t_uint256",
+        "label": "mapping(uint256 => bool)",
+        "numberOfBytes": "32",
+        "value": "t_bool"
+      },
+      "t_mapping(t_uint256,t_mapping(t_uint256,t_bool))": {
+        "encoding": "mapping",
+        "key": "t_uint256",
+        "label": "mapping(uint256 => mapping(uint256 => bool))",
+        "numberOfBytes": "32",
+        "value": "t_mapping(t_uint256,t_bool)"
+      },
+      "t_mapping(t_uint256,t_struct(Project)23_storage)": {
+        "encoding": "mapping",
+        "key": "t_uint256",
+        "label": "mapping(uint256 => struct MilestoneFunding.Project)",
+        "numberOfBytes": "32",
+        "value": "t_struct(Project)23_storage"
+      },
+      "t_string_storage": {
+        "encoding": "bytes",
+        "label": "string",
+        "numberOfBytes": "32"
+      },
+      "t_struct(Project)23_storage": {
+        "encoding": "inplace",
+        "label": "struct MilestoneFunding.Project",
+        "members": [
+          {
+            "astId": 7,
+            "contract": "contracts/MilestoneFunding.sol:MilestoneFunding",
+            "label": "creator",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_address_payable"
+          },
+          {
+            "astId": 9,
+            "contract": "contracts/MilestoneFunding.sol:MilestoneFunding",
+            "label": "funder",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_address"
+          },
+          {
+            "astId": 11,
+            "contract": "contracts/MilestoneFunding.sol:MilestoneFunding",
+            "label": "title",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_string_storage"
+          },
+          {
+            "astId": 13,
+            "contract": "contracts/MilestoneFunding.sol:MilestoneFunding",
+            "label": "totalAmount",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 15,
+            "contract": "contracts/MilestoneFunding.sol:MilestoneFunding",
+            "label": "releasedAmount",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 17,
+            "contract": "contracts/MilestoneFunding.sol:MilestoneFunding",
+            "label": "milestoneCount",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 19,
+            "contract": "contracts/MilestoneFunding.sol:MilestoneFunding",
+            "label": "completedMilestones",
+            "offset": 0,
+            "slot": "6",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 22,
+            "contract": "contracts/MilestoneFunding.sol:MilestoneFunding",
+            "label": "status",
+            "offset": 0,
+            "slot": "7",
+            "type": "t_enum(ProjectStatus)5"
+          }
+        ],
+        "numberOfBytes": "256"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  }
+}
