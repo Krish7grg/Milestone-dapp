@@ -76,7 +76,7 @@ NEXT_PUBLIC_BACKEND_URL=http://localhost:5000
 #### Backend (.env)
 
 ```env
-MONGODB_URI=mongodb+srv://krish1:mI7f08QuKO9na42M@cluster0.thlrk3g.mongodb.net/?appName=Cluster0
+MONGODB_URI=not allowed to share
 
 PORT=5000
 ```
@@ -84,9 +84,9 @@ PORT=5000
 #### Smart Contract (packages/hardhat/.env)
 
 ```env
-ALCHEMY_API_KEY=EA2xhD3rFLOWXm8ZANAEp
-DEPLOYER_PRIVATE_KEY=MONGODB_URI=mongodb+srv://krish1:mI7f08QuKO9na42M@cluster0.thlrk3g.mongodb.net/?appName=Cluster0
-ETHERSCAN_API_KEY=0x27EAC216B942E1c245c966899423E9DeDc69458c
+ALCHEMY_API_KEY=not allowed to share
+DEPLOYER_PRIVATE_KEY=not allowed to share
+ETHERSCAN_API_KEY=not allowed to share
 ```
 
 ---
