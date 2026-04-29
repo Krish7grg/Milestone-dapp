@@ -47,6 +47,22 @@ export default function ProjectsPage() {
       alert("Funding failed. Make sure you are not the project creator.");
     }
   }
+  async function handleReleaseMilestone(projectId: number, milestoneIndex: number) {
+    try {
+      await writeContractAsync({
+        address: contract.address,
+        abi: contract.abi,
+        functionName: "releaseMilestone",
+        args: [BigInt(projectId), BigInt(milestoneIndex)],
+      });
+
+      alert("Milestone released successfully");
+      await loadProjects();
+    } catch (error) {
+      console.error(error);
+      alert("Milestone release failed. Only the funder can release milestones.");
+    }
+  }
 
   return (
     <div className="max-w-5xl mx-auto p-8">
@@ -66,11 +82,20 @@ export default function ProjectsPage() {
 
               <div>
                 <h3 className="font-semibold">Milestones</h3>
-                <ul className="list-disc ml-6">
+                <div className="space-y-2">
                   {project.milestones.map((milestone, index) => (
-                    <li key={index}>{milestone}</li>
+                    <div key={index} className="flex items-center justify-between border rounded-lg p-3">
+                      <span>{milestone}</span>
+
+                      <button
+                        className="btn btn-sm btn-secondary"
+                        onClick={() => handleReleaseMilestone(project.contractProjectId, index)}
+                      >
+                        Release
+                      </button>
+                    </div>
                   ))}
-                </ul>
+                </div>
               </div>
 
               <div className="flex gap-3 items-center">
