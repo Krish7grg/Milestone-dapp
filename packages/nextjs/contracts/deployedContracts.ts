@@ -466,6 +466,323 @@ const deployedContracts = {
       deployedOnBlock: 1,
     },
   },
+  11155111: {
+    MilestoneFunding: {
+      address: "0x27EAC216B942E1c245c966899423E9DeDc69458c",
+      abi: [
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "projectId",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "milestoneIndex",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "amount",
+              type: "uint256",
+            },
+          ],
+          name: "MilestoneReleased",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "projectId",
+              type: "uint256",
+            },
+          ],
+          name: "ProjectCancelled",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "projectId",
+              type: "uint256",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "creator",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "string",
+              name: "title",
+              type: "string",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "milestoneCount",
+              type: "uint256",
+            },
+          ],
+          name: "ProjectCreated",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "projectId",
+              type: "uint256",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "funder",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "amount",
+              type: "uint256",
+            },
+          ],
+          name: "ProjectFunded",
+          type: "event",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_projectId",
+              type: "uint256",
+            },
+          ],
+          name: "cancelProject",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "string",
+              name: "_title",
+              type: "string",
+            },
+            {
+              internalType: "uint256",
+              name: "_milestoneCount",
+              type: "uint256",
+            },
+          ],
+          name: "createProject",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_projectId",
+              type: "uint256",
+            },
+          ],
+          name: "fundProject",
+          outputs: [],
+          stateMutability: "payable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_projectId",
+              type: "uint256",
+            },
+          ],
+          name: "getProject",
+          outputs: [
+            {
+              components: [
+                {
+                  internalType: "address payable",
+                  name: "creator",
+                  type: "address",
+                },
+                {
+                  internalType: "address",
+                  name: "funder",
+                  type: "address",
+                },
+                {
+                  internalType: "string",
+                  name: "title",
+                  type: "string",
+                },
+                {
+                  internalType: "uint256",
+                  name: "totalAmount",
+                  type: "uint256",
+                },
+                {
+                  internalType: "uint256",
+                  name: "releasedAmount",
+                  type: "uint256",
+                },
+                {
+                  internalType: "uint256",
+                  name: "milestoneCount",
+                  type: "uint256",
+                },
+                {
+                  internalType: "uint256",
+                  name: "completedMilestones",
+                  type: "uint256",
+                },
+                {
+                  internalType: "enum MilestoneFunding.ProjectStatus",
+                  name: "status",
+                  type: "uint8",
+                },
+              ],
+              internalType: "struct MilestoneFunding.Project",
+              name: "",
+              type: "tuple",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          name: "milestoneReleased",
+          outputs: [
+            {
+              internalType: "bool",
+              name: "",
+              type: "bool",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "projectCounter",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          name: "projects",
+          outputs: [
+            {
+              internalType: "address payable",
+              name: "creator",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "funder",
+              type: "address",
+            },
+            {
+              internalType: "string",
+              name: "title",
+              type: "string",
+            },
+            {
+              internalType: "uint256",
+              name: "totalAmount",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "releasedAmount",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "milestoneCount",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "completedMilestones",
+              type: "uint256",
+            },
+            {
+              internalType: "enum MilestoneFunding.ProjectStatus",
+              name: "status",
+              type: "uint8",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_projectId",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "_milestoneIndex",
+              type: "uint256",
+            },
+          ],
+          name: "releaseMilestone",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+      ],
+      inheritedFunctions: {},
+      deployedOnBlock: 10755994,
+    },
+  },
 } as const;
 
 export default deployedContracts satisfies GenericContractsDeclaration;

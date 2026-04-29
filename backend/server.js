@@ -17,8 +17,13 @@ const projectSchema = new mongoose.Schema(
     contractProjectId: {
       type: Number,
       required: true,
-      unique: true,
+      
     },
+    network: {
+  type: String,
+  default: "sepolia",
+    },
+
     title: String,
     description: String,
     creatorAddress: String,
@@ -28,6 +33,7 @@ const projectSchema = new mongoose.Schema(
     status: {
       type: String,
       default: "Active",
+    
     },
   },
   { timestamps: true },
@@ -40,6 +46,7 @@ app.post("/api/projects", async (req, res) => {
     const project = await Project.create(req.body);
     res.status(201).json(project);
   } catch (error) {
+    console.error("Create project error:", error);
     res.status(500).json({ message: error.message });
   }
 });
