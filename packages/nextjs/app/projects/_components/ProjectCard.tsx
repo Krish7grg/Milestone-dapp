@@ -25,13 +25,13 @@ export function ProjectCard({ project, fundingAmount, setFundingAmount, reloadPr
     args: [BigInt(project.contractProjectId)],
   });
 
+  const totalAmount = blockchainProject ? formatEther(blockchainProject.totalAmount) : "0";
+  const releasedAmount = blockchainProject ? formatEther(blockchainProject.releasedAmount) : "0";
+  const completedMilestones = blockchainProject ? Number(blockchainProject.completedMilestones) : 0;
+  const status = blockchainProject ? Number(blockchainProject.status) : 0;
+
   async function handleFundProject() {
     try {
-      if (!fundingAmount) {
-        alert("Enter funding amount");
-        return;
-      }
-
       await writeContractAsync({
         address: contract.address,
         abi: contract.abi,
@@ -44,31 +44,26 @@ export function ProjectCard({ project, fundingAmount, setFundingAmount, reloadPr
       await reloadProjects();
     } catch (error) {
       console.error(error);
-      alert("Funding failed. Make sure you are not the project creator.");
+      alert("Funding failed. Use a different wallet from the creator.");
     }
   }
 
-  async function handleReleaseMilestone(milestoneIndex: number) {
+  async function handleReleaseMilestone(index: number) {
     try {
       await writeContractAsync({
         address: contract.address,
         abi: contract.abi,
         functionName: "releaseMilestone",
-        args: [BigInt(project.contractProjectId), BigInt(milestoneIndex)],
+        args: [BigInt(project.contractProjectId), BigInt(index)],
       });
 
       alert("Milestone released successfully");
       await reloadProjects();
     } catch (error) {
       console.error(error);
-      alert("Milestone release failed. Only the funder can release milestones.");
+      alert("Only the funder can release milestones.");
     }
   }
-
-  const totalAmount = blockchainProject ? formatEther(blockchainProject.totalAmount) : "0";
-  const releasedAmount = blockchainProject ? formatEther(blockchainProject.releasedAmount) : "0";
-  const completedMilestones = blockchainProject ? Number(blockchainProject.completedMilestones) : 0;
-  const status = blockchainProject ? Number(blockchainProject.status) : 0;
 
   return (
     <div className="border rounded-xl p-5 shadow space-y-4">
@@ -84,38 +79,36 @@ export function ProjectCard({ project, fundingAmount, setFundingAmount, reloadPr
         <p>Total Milestones: {project.milestones.length}</p>
       </div>
 
-      <div>
-        <h3 className="font-semibold mb-2">Milestones</h3>
+      <div className="space-y-2">
+        <h3 className="font-semibold">Milestones</h3>
 
-        <div className="space-y-2">
-          {project.milestones.map((milestone, index) => (
-            <div key={index} className="flex items-center justify-between border rounded-lg p-3">
-              <span>
-                {index + 1}. {milestone}
-              </span>
+        {project.milestones.map((milestone, index) => (
+          <div key={index} className="flex justify-between items-center border rounded-lg p-3">
+            <span>
+              {index + 1}. {milestone}
+            </span>
 
-              <button
-                className="btn btn-sm btn-secondary"
-                onClick={() => handleReleaseMilestone(index)}
-                disabled={status !== 0 || index < completedMilestones}
-              >
-                {index < completedMilestones ? "Released" : "Release"}
-              </button>
-            </div>
-          ))}
-        </div>
+            <button
+              className="btn btn-sm btn-secondary"
+              disabled={index < completedMilestones || status !== 0}
+              onClick={() => handleReleaseMilestone(index)}
+            >
+              {index < completedMilestones ? "Released" : "Release"}
+            </button>
+          </div>
+        ))}
       </div>
 
-      <div className="flex gap-3 items-center">
+      <div className="flex gap-3">
         <input
           className="input input-bordered"
-          placeholder="Amount in ETH, e.g. 0.03"
+          placeholder="Amount in ETH"
           value={fundingAmount}
-          onChange={e => setFundingAmount(e.target.value)}
           disabled={Number(totalAmount) > 0}
+          onChange={e => setFundingAmount(e.target.value)}
         />
 
-        <button className="btn btn-primary" onClick={handleFundProject} disabled={Number(totalAmount) > 0}>
+        <button className="btn btn-primary" disabled={Number(totalAmount) > 0} onClick={handleFundProject}>
           {Number(totalAmount) > 0 ? "Funded" : "Fund Project"}
         </button>
       </div>
